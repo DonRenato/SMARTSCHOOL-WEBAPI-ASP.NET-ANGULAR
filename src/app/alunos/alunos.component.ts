@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlunosComponent implements OnInit {
 
-  titulo = 'Alunos'
+  titulo = 'Alunos';
+  alunoSelecionado: string;
+
   alunos =[
     {id: 1 ,nome :"Marta", sobrenome:"Kent" ,telefone:"332243434"},
     {id: 2 ,nome :"Paula", sobrenome:"Isabela" ,telefone:"3323233"},
@@ -17,6 +19,14 @@ export class AlunosComponent implements OnInit {
     {id: 6 ,nome :"Pedro", sobrenome:"Alvares" ,telefone:"332324434"},
     {id: 7 ,nome :"Paulo", sobrenome:"José" ,telefone:"33228698"}
   ];
+
+  alunoSelected(aluno: any){
+    this.alunoSelecionado = aluno.nome;
+  }
+
+  voltar(){
+    this.alunoSelecionado="";
+  }
 
   constructor() { }
 
