@@ -1,49 +1,55 @@
-<div *ngIf="profSelecionado">
-  <div class="row">
-    <div class="mr-auto">
-      <app-titulo [titulo]="'Professor: ' + profSelecionado"></app-titulo>
+<div class="row">
+  <div class="col-sm-6" *ngIf="profSelecionado">
+    <div class="row">
+      <div class="mr-auto">
+        <app-titulo [titulo]="'ID Professor: ' + profSelecionado.id"></app-titulo>
+      </div>
+      <div class="mt-1">
+        <button class="btn btn-outline-danger" (click)="voltar()">Fechar</button>
+      </div>
     </div>
-    <div class="mt-1">
-      <button class="btn btn-warning" (click)="voltar()">Lista de Professores</button>
-    </div>
+
+    <form>
+      <div class="form-group">
+        <label for="formGroupExampleInput">Nome</label>
+        <input type="text" value="{{profSelecionado.nome}}" class="form-control" >
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Disciplina</label>
+        <input type="text" value="{{profSelecionado.disciplina}}" class="form-control" >
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success">Salvar</button>
+
+      </div>
+    </form>
   </div>
 
-  <form>
-    <div class="form-group">
-      <label for="formGroupExampleInput">Nome</label>
-      <input type="text" class="form-control" >
-    </div>
-    <div class="form-group">
-      <label for="formGroupExampleInput2">Disciplina</label>
-      <input type="text" class="form-control" >
-    </div>
-  </form>
-</div>
+  <div [ngClass]="{'col-sm-6': profSelecionado, 'col-sm-12' : !profSelecionado}">
+    <app-titulo [titulo]="titulo"></app-titulo>
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Disciplina</th>
 
-<div *ngIf="!profSelecionado">
-  <app-titulo [titulo]="titulo"></app-titulo>
-  <table class="table table-dark table-hover">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Disciplina</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prof of professores"
+          style="cursor: pointer;"
+          (click)="profSelected(prof)"
+        >
+          <th scope="row">{{prof.id}}</th>
+          <td>{{prof.nome}}</td>
+          <td>{{prof.disciplina}}</td>
+        </tr>
 
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let prof of professores"
-        style="cursor: pointer;"
-        (click)="profSelected(prof)"
-      >
-        <th scope="row">{{prof.id}}</th>
-        <td>{{prof.nome}}</td>
-        <td>{{prof.disciplina}}</td>
-      </tr>
+      </tbody>
+    </table>
 
-    </tbody>
-  </table>
-
+  </div>
 </div>
 
 
