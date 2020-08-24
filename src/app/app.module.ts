@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,8 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavComponent } from './nav/nav.component';
 import { TituloComponent } from './titulo/titulo.component';
+import { AlunosListaComponent } from './alunosLista/alunosLista.component';
+import { ProfessoresListComponent } from './professoresList/professoresList.component';
 
 
 @NgModule({
@@ -21,7 +24,9 @@ import { TituloComponent } from './titulo/titulo.component';
     PerfilComponent,
     DashboardComponent,
       NavComponent,
-      TituloComponent
+      TituloComponent,
+      AlunosListaComponent,
+      ProfessoresListComponent
    ],
   imports: [
     BrowserModule,
@@ -29,7 +34,8 @@ import { TituloComponent } from './titulo/titulo.component';
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

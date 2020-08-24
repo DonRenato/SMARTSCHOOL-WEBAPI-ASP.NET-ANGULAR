@@ -1,16 +1,15 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Aluno } from '../models/Aluno';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'app-alunos',
-  templateUrl: './alunos.component.html',
-  styleUrls: ['./alunos.component.css']
+  selector: 'app-alunosLista',
+  templateUrl: './alunosLista.component.html',
+  styleUrls: ['./alunosLista.component.css']
 })
-export class AlunosComponent implements OnInit {
+export class AlunosListaComponent implements OnInit {
 
-  modalRef: BsModalRef;
+
   alunoForm: FormGroup;
   titulo = 'Alunos';
   alunoSelecionado: Aluno;
@@ -27,11 +26,8 @@ export class AlunosComponent implements OnInit {
   ];
 
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-  }
 
-  constructor(private fb: FormBuilder, private modalService: BsModalService) {
+  constructor(private fb: FormBuilder) {
     this.criarForm();
    }
 
@@ -45,19 +41,5 @@ export class AlunosComponent implements OnInit {
       telefone: ['', Validators.required]
     });
   }
-
-  alunoSubmit(){
-    console.log(this.alunoForm.value);
-  }
-
-  alunoSelected(aluno: Aluno){
-    this.alunoSelecionado = aluno;
-    this.alunoForm.patchValue(aluno);
-  }
-
-  voltar(){
-    this.alunoSelecionado= null;
-  }
-
 
 }
