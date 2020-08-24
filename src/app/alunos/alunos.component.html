@@ -1,4 +1,5 @@
 <div class="row">
+
   <div class="col-sm-6" *ngIf="alunoSelecionado">
     <div class="row">
       <div class="mr-auto">
@@ -9,20 +10,20 @@
       </div>
     </div>
 
-    <form>
+    <form [formGroup]="alunoForm" (submit)="alunoSubmit()">
       <div class="form-group">
         <label for="formGroupExampleInput">Nome</label>
-        <input type="text" value="{{alunoSelecionado.nome}}" class="form-control" >
+        <input type="text" formControlName="nome" class="form-control" >
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Sobrenome</label>
-        <input type="text" value="{{alunoSelecionado.sobrenome}}" class="form-control" >
+        <input type="text" formControlName="sobrenome" class="form-control" >
       </div>
       <div class="form-group">
         <label for="formGroupExampleInput2">Telefone</label>
-        <input type="text" value="{{alunoSelecionado.telefone}}" class="form-control" >
+        <input type="text" formControlName="telefone" class="form-control" >
       </div>
-      <button class="btn btn-success">Salvar</button>
+      <button class="btn btn-success" [disabled]="!alunoForm.valid">Salvar</button>
     </form>
   </div>
 
